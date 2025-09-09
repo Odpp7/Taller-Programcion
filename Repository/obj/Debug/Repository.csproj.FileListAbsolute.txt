@@ -1,0 +1,9 @@
+C:\Users\ESTUDIANTES\Documents\Visual Studio 2022\repos\TALLER\Repository\bin\Debug\Repository.dll
+C:\Users\ESTUDIANTES\Documents\Visual Studio 2022\repos\TALLER\Repository\bin\Debug\Repository.pdb
+C:\Users\ESTUDIANTES\Documents\Visual Studio 2022\repos\TALLER\Repository\bin\Debug\Entity.dll
+C:\Users\ESTUDIANTES\Documents\Visual Studio 2022\repos\TALLER\Repository\bin\Debug\Entity.pdb
+C:\Users\ESTUDIANTES\Documents\Visual Studio 2022\repos\TALLER\Repository\obj\Debug\Repository.csproj.AssemblyReference.cache
+C:\Users\ESTUDIANTES\Documents\Visual Studio 2022\repos\TALLER\Repository\obj\Debug\Repository.csproj.CoreCompileInputs.cache
+C:\Users\ESTUDIANTES\Documents\Visual Studio 2022\repos\TALLER\Repository\obj\Debug\Repository.csproj.Up2Date
+C:\Users\ESTUDIANTES\Documents\Visual Studio 2022\repos\TALLER\Repository\obj\Debug\Repository.dll
+C:\Users\ESTUDIANTES\Documents\Visual Studio 2022\repos\TALLER\Repository\obj\Debug\Repository.pdb
