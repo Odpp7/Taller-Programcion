@@ -40,9 +40,7 @@ namespace Service
                 IdNuevo = 1;
             }
             String Fecha = DateTime.Now.ToString("dd/MM/yyyy");
-
             bool flag = PedidoRepositoryTxt.Save(new Pedido(IdNuevo, Estudiante, Libro, Fecha));
-
             if (flag) {
                 return $"Success: El pedido de {Estudiante} se ha guardado con exito";
             }
@@ -50,7 +48,11 @@ namespace Service
             {
                 return $"Warn: El pedido de {Estudiante} no se ha guardado con exito";
             }
+        }
 
+        public List<Pedido> GetPedidos()
+        {
+            return PedidoRepositoryTxt.GetAll();
         }
 
     }
