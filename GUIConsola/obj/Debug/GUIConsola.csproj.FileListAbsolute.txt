@@ -12,3 +12,18 @@ C:\Users\ESTUDIANTES\Documents\Visual Studio 2022\repos\TALLER\GUIConsola\obj\De
 C:\Users\ESTUDIANTES\Documents\Visual Studio 2022\repos\TALLER\GUIConsola\obj\Debug\GUIConsola.pdb
 C:\Users\ESTUDIANTES\Documents\Visual Studio 2022\repos\TALLER\GUIConsola\bin\Debug\Repository.dll
 C:\Users\ESTUDIANTES\Documents\Visual Studio 2022\repos\TALLER\GUIConsola\bin\Debug\Repository.pdb
+C:\Users\HP\OneDrive\Escritorio\Taller-Programcion\GUIConsola\bin\Debug\GUIConsola.exe.config
+C:\Users\HP\OneDrive\Escritorio\Taller-Programcion\GUIConsola\bin\Debug\GUIConsola.exe
+C:\Users\HP\OneDrive\Escritorio\Taller-Programcion\GUIConsola\bin\Debug\GUIConsola.pdb
+C:\Users\HP\OneDrive\Escritorio\Taller-Programcion\GUIConsola\bin\Debug\Entity.dll
+C:\Users\HP\OneDrive\Escritorio\Taller-Programcion\GUIConsola\bin\Debug\Service.dll
+C:\Users\HP\OneDrive\Escritorio\Taller-Programcion\GUIConsola\bin\Debug\Repository.dll
+C:\Users\HP\OneDrive\Escritorio\Taller-Programcion\GUIConsola\bin\Debug\Entity.pdb
+C:\Users\HP\OneDrive\Escritorio\Taller-Programcion\GUIConsola\bin\Debug\Service.pdb
+C:\Users\HP\OneDrive\Escritorio\Taller-Programcion\GUIConsola\bin\Debug\Repository.pdb
+C:\Users\HP\OneDrive\Escritorio\Taller-Programcion\GUIConsola\obj\Debug\GUIConsola.csproj.AssemblyReference.cache
+C:\Users\HP\OneDrive\Escritorio\Taller-Programcion\GUIConsola\obj\Debug\GUIConsola.exe.config
+C:\Users\HP\OneDrive\Escritorio\Taller-Programcion\GUIConsola\obj\Debug\GUIConsola.csproj.CoreCompileInputs.cache
+C:\Users\HP\OneDrive\Escritorio\Taller-Programcion\GUIConsola\obj\Debug\GUIConsola.csproj.Up2Date
+C:\Users\HP\OneDrive\Escritorio\Taller-Programcion\GUIConsola\obj\Debug\GUIConsola.exe
+C:\Users\HP\OneDrive\Escritorio\Taller-Programcion\GUIConsola\obj\Debug\GUIConsola.pdb

@@ -24,7 +24,9 @@ namespace Repository
                 // Salto de linea en linea hasta llegar al final 
                 while ((line = rd.ReadLine()) != null)
                 {
-                    list.Add(MapPedido(line));
+                    if (string.IsNullOrWhiteSpace(line)) continue; // ignora líneas vacías
+                    var pedido = MapPedido(line);
+                    if (pedido != null) list.Add(pedido);
                 }
             }
             return list;
@@ -32,13 +34,13 @@ namespace Repository
         public bool Save(Pedido entity)
         {
             bool flag = false; // Indicara si se guardo o no el pedido
-            // Por medio del using el sistema cierra automaticamente el wr - Me ahorro 1 linea de codigo
+                               // Por medio del using el sistema cierra automaticamente el wr - Me ahorro 1 linea de codigo
             using (StreamWriter wr = new StreamWriter(path, true))
             {
-                wr.WriteLine();
-                // si se guarda correctamente, se actualiza la flag
+                wr.WriteLine(FormatPedido(entity)); // Guardamos el pedido bien formateado
                 flag = true;
             }
+
             return flag;
         }
 
@@ -57,6 +59,8 @@ namespace Repository
         public String FormatPedido(Pedido pedido)
         {
             return $"{pedido.IdPedido}|{pedido.Estudiante}|{pedido.Libro}|{pedido.Fecha}";
+
+
         }
     }
 }

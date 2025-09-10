@@ -9,23 +9,21 @@ namespace GUI
     {
         static void Main(string[] args)
         {
-<<<<<<< HEAD
-            
-=======
-            // Instanciamos el servicio
-            
             PedidoService service = new PedidoService();
-
-            // Menú principal
             bool seguir = true;
 
             while (seguir)
             {
                 Console.Clear();
-                Console.WriteLine("===== Sistema de Gestión de Pedidos de Libros =====");
+                MostrarTitulo("SISTEMA DE GESTIÓN DE PEDIDOS DE LIBROS", ConsoleColor.Cyan);
+
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("1. Registrar un nuevo pedido");
                 Console.WriteLine("2. Consultar todos los pedidos");
                 Console.WriteLine("3. Salir");
+                Console.ResetColor();
+
+                Console.WriteLine("========================================");
                 Console.Write("Seleccione una opción: ");
 
                 string opcion = Console.ReadLine();
@@ -33,33 +31,31 @@ namespace GUI
                 switch (opcion)
                 {
                     case "1":
-                        // Registrar un nuevo pedido
                         RegistrarPedido(service);
                         break;
-
                     case "2":
-                        // Consultar todos los pedidos
                         ConsultarPedidos(service);
                         break;
-
                     case "3":
-                        // Salir
                         seguir = false;
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("\nSaliendo del sistema... ¡Hasta luego!");
+                        Console.ResetColor();
                         break;
-
                     default:
-                        Console.WriteLine("Opción no válida. Presione cualquier tecla para continuar...");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("\n⚠ Opción no válida. Presione una tecla para continuar...");
+                        Console.ResetColor();
                         Console.ReadKey();
                         break;
                 }
             }
         }
 
-        // Método para registrar un nuevo pedido
         private static void RegistrarPedido(PedidoService service)
         {
             Console.Clear();
-            Console.WriteLine("===== Registrar Nuevo Pedido =====");
+            MostrarTitulo("REGISTRAR NUEVO PEDIDO", ConsoleColor.Magenta);
 
             Console.Write("Ingrese el nombre del Estudiante: ");
             string estudiante = Console.ReadLine();
@@ -67,38 +63,55 @@ namespace GUI
             Console.Write("Ingrese el nombre del Libro: ");
             string libro = Console.ReadLine();
 
-            // Llamamos al servicio para registrar el pedido
-            string resultado = service.RegistrarPedido(estudiante, libro);
+            string resultado = service.SavePedido(estudiante, libro);
 
-            Console.WriteLine(resultado);
-            Console.WriteLine("Presione cualquier tecla para continuar...");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"\n{resultado}");
+            Console.ResetColor();
+
+            Console.WriteLine("\nPresione cualquier tecla para continuar...");
             Console.ReadKey();
         }
 
-        // Método para consultar todos los pedidos
         private static void ConsultarPedidos(PedidoService service)
         {
             Console.Clear();
-            Console.WriteLine("===== Listado de Pedidos =====");
+            MostrarTitulo("LISTADO DE PEDIDOS", ConsoleColor.Blue);
 
-            // Obtenemos todos los pedidos
-            List<Pedido> pedidos = service.ConsultarPedidos();
+            List<Pedido> pedidos = service.GetPedidos();
 
             if (pedidos.Count == 0)
             {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine("(No hay pedidos aún)");
+                Console.ResetColor();
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("ID | Estudiante | Libro | Fecha");
+                Console.WriteLine("------------------------------------------");
+                Console.ResetColor();
+
                 foreach (var pedido in pedidos)
                 {
                     Console.WriteLine($"{pedido.IdPedido} | {pedido.Estudiante} | {pedido.Libro} | {pedido.Fecha}");
                 }
             }
 
-            Console.WriteLine("Presione cualquier tecla para continuar...");
+            Console.WriteLine("\nPresione cualquier tecla para continuar...");
             Console.ReadKey();
->>>>>>> 3ccf7a8 (Subir proyecto con carpetas y archivos)
+        }
+
+        // Método para mostrar títulos centrados y con color
+        private static void MostrarTitulo(string texto, ConsoleColor color)
+        {
+            Console.ForegroundColor = color;
+            string linea = new string('=', texto.Length + 10);
+            Console.WriteLine(linea.PadLeft((Console.WindowWidth + linea.Length) / 2));
+            Console.WriteLine(texto.PadLeft((Console.WindowWidth + texto.Length) / 2));
+            Console.WriteLine(linea.PadLeft((Console.WindowWidth + linea.Length) / 2));
+            Console.ResetColor();
         }
     }
 }

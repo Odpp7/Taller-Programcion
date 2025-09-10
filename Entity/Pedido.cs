@@ -20,7 +20,11 @@ namespace Entity
 
         public Pedido(long id, String estudiante, String libro, String fecha)
         {
-
+            IdPedido = id;
+            Estudiante = estudiante;
+            Libro = libro;
+            Fecha = fecha;
         }
+
     }
 }
