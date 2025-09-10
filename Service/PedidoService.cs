@@ -10,49 +10,48 @@ namespace Service
 {
     public class PedidoService
     {
-        private PedidoRepositoryTxt repositoryTxt;
-
+        // Creo una instancia de repository
+        PedidoRepositoryTxt PedidoRepositoryTxt;
         public PedidoService()
         {
-            repositoryTxt = new PedidoRepositoryTxt();
+            PedidoRepositoryTxt = new PedidoRepositoryTxt();
         }
-
-        // HU-01: Registrar pedido
-        public string RegistrarPedido(string estudiante, string libro)
+        // 
+        public String SavePedido(String Estudiante, String Libro)
         {
-            // Validaciones
-            if (string.IsNullOrWhiteSpace(estudiante))
+            if (String.IsNullOrWhiteSpace(Estudiante))
             {
-                return "Error: El campo Estudiante no puede estar vacio.";
+                return "Warn: El nombre del estudiante no puede estar vacio";
             }
-            if (string.IsNullOrWhiteSpace(libro))
+            if (String.IsNullOrWhiteSpace(Libro))
             {
-                return "Error: El campo Libro no puede estar vacio.";
+                return "Warn: El nombre del libro no puede estar vacio";
+            }
+            // Creo una lista para saber que id es el siguiente
+            var pedidos = PedidoRepositoryTxt.GetAll();
+            long IdNuevo;
+            // Utilizo el .Any() para validar si hay un elemento en la lista.
+            if (pedidos.Any())
+            {
+                IdNuevo = pedidos.Last().IdPedido + 1;
+            }
+            else
+            {
+                IdNuevo = 1;
+            }
+            String Fecha = DateTime.Now.ToString("dd/MM/yyyy");
+
+            bool flag = PedidoRepositoryTxt.Save(new Pedido(IdNuevo, Estudiante, Libro, Fecha));
+
+            if (flag) {
+                return $"Success: El pedido de {Estudiante} se ha guardado con exito";
+            }
+            else
+            {
+                return $"Warn: El pedido de {Estudiante} no se ha guardado con exito";
             }
 
-            // Consultar pedidos existentes para calcular nuevo Id
-            var pedidos = repositoryTxt.GetAll();
-            long nuevoId = pedidos.Count == 0 ? 1 : pedidos[pedidos.Count - 1].IdPedido + 1;
-
-
-            var pedido = new Pedido
-            {
-                IdPedido = nuevoId,
-                Estudiante = estudiante,
-                Libro = libro,
-                Fecha = DateTime.Now
-            };
-
-            // Guardar
-            bool ok = repositoryTxt.Save(pedido);
-
-            return ok ? "Pedido registrado correctamente." : "Error al registrar pedido.";
         }
 
-        // HU-02: Listar pedidos
-        public List<Pedido> ConsultarPedidos()
-        {
-            return repositoryTxt.GetAll();
-        }
     }
 }

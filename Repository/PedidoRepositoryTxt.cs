@@ -7,67 +7,56 @@ namespace Repository
 {
     public class PedidoRepositoryTxt : IPedidoRepository<Pedido>
     {
-        private readonly string path = @"C:\Users\ESTUDIANTES\Documents\Visual Studio 2022\repos\TALLER\Pedidos.txt";
-
+        // Nombre del archivo que guardara los pedidos
+        private String path = "pedidos.txt";
         public List<Pedido> GetAll()
         {
-            var listPedidos = new List<Pedido>();
-
-            // Verificamos si el archivo existe antes de intentar leer
-            if (File.Exists(path))
-            {
-                using (StreamReader reader = new StreamReader(path))
-                {
-                    string line;
-                    while ((line = reader.ReadLine()) != null)
-                    {
-                        listPedidos.Add(MapPedido(line));
-                    }
-                }
-            }
-            else
-            {
-                Console.WriteLine("El archivo 'Pedidos.txt' no existe. Se creará uno nuevo al guardar.");
-            }
-
-            return listPedidos;
-        }
-
-        public bool Save(Pedido entity)
-        {
-            bool SaveFlag = false;
-
-            // Si el archivo no existe, se crea automáticamente
+            // Necesito validar que el archivo existe. Si no existe retorno una lista sin elementos
             if (!File.Exists(path))
             {
-                using (FileStream fs = File.Create(path))
+                return new List<Pedido>();
+            }
+            // Creo una lista vacia que devolvera los pedidos existentes
+            var list = new List<Pedido>();
+            using (StreamReader rd = new StreamReader(path))
+            {
+                String line;
+                // Salto de linea en linea hasta llegar al final 
+                while ((line = rd.ReadLine()) != null)
                 {
-                    // El archivo se crea vacío, luego se puede escribir
+                    list.Add(MapPedido(line));
                 }
             }
-
-            // Ahora escribimos el pedido en el archivo
-            using (StreamWriter writer = new StreamWriter(path, true))
+            return list;
+        }
+        public bool Save(Pedido entity)
+        {
+            bool flag = false; // Indicara si se guardo o no el pedido
+            // Por medio del using el sistema cierra automaticamente el wr - Me ahorro 1 linea de codigo
+            using (StreamWriter wr = new StreamWriter(path, true))
             {
-                writer.WriteLine(entity.ToString());
-                SaveFlag = true;
+                wr.WriteLine();
+                // si se guarda correctamente, se actualiza la flag
+                flag = true;
             }
-
-            return SaveFlag;
+            return flag;
         }
 
         public Pedido MapPedido(string line)
         {
+            // 1. Creo un pedido vacio
             var pedido = new Pedido();
-
-            // Almaceno los datos del pedido
-            var datos = line.Split('|');
-            pedido.IdPedido = long.Parse(datos[0]);
-            pedido.Estudiante = datos[1];
-            pedido.Libro = datos[2];
-            pedido.Fecha = DateTime.Parse(datos[3]);
-
+            // 2. Completo los campos con la linea que recibo del rd
+            pedido.IdPedido = long.Parse(line.Split('|')[0]);
+            pedido.Estudiante = line.Split('|')[1];
+            pedido.Libro = line.Split('|')[2];
+            pedido.Fecha = line.Split('|')[3];
             return pedido;
+        }
+
+        public String FormatPedido(Pedido pedido)
+        {
+            return $"{pedido.IdPedido}|{pedido.Estudiante}|{pedido.Libro}|{pedido.Fecha}";
         }
     }
 }

@@ -11,19 +11,16 @@ namespace Entity
         public long IdPedido { get; set; }
         public String Estudiante { get; set; }
         public String Libro { get; set; }
-        public DateTime Fecha { get; set; }
+        public String Fecha { get; set; }
 
-<<<<<<< HEAD
-=======
-        // Formatea la linea para el guardado en el txt
->>>>>>> 3ccf7a8 (Subir proyecto con carpetas y archivos)
-        public override string ToString()
+        public Pedido()
         {
-            return $"{IdPedido}|{Estudiante}|{Libro}|{Fecha}";
-        }
-<<<<<<< HEAD
 
-=======
->>>>>>> 3ccf7a8 (Subir proyecto con carpetas y archivos)
+        }
+
+        public Pedido(long id, String estudiante, String libro, String fecha)
+        {
+
+        }
     }
 }
